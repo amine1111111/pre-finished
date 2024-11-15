@@ -1,0 +1,234 @@
+:root {
+    --gap: calc(var(--features-title-size) * 0.2);
+  --row-gap: var(--gap);
+  --col-gap: var(--gap);
+  --features-title-size: clamp(5em, 7.5vw, 7.5em);
+}
+
+
+.home-section-container {
+    height: 100dvh;
+    display: grid;
+    > * {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .title {
+        justify-self: center;
+        translate: 0 50% ;
+        text-wrap: initial;
+        --_title-mxw : 20ch ;
+    }
+    .title .text-scroll-reveal {
+        animation-timeline: scroll();
+    }
+    .title + div {
+        align-self: end;
+    }
+}
+
+
+.video-bg {
+    inset: 0;
+    pointer-events: none;
+    iframe {
+        scale: 1 1.2;
+    }
+}
+
+
+
+
+
+.text span{
+    --txt-sp-fs :  clamp(.8rem, 5vw, 1.3rem) ; 
+    font-size: var(--txt-sp-fs);
+    display: block;
+    text-align: center;
+    word-spacing: calc(var(--txt-sp-fs) * -.2);
+    
+}
+sup {
+    color: grey;
+    font-size: .7em;
+}
+
+
+
+
+
+
+
+
+
+
+
+.team-highlight {
+    justify-content: center;
+}
+.team-description p{
+    line-height: 1.5;
+}
+
+
+
+
+
+.ex-title {
+    --_title-mxw : 15ch ;
+    margin-top: 5vh;
+}
+
+
+.thumbnail-wrapper {
+    display: grid;
+    grid-template-areas:"scroll-sm ex-vid ex-talent" ;
+    gap: 1rem;
+
+    .production {
+        font-size: .7rem;
+    }
+    .scroll-container{
+        max-width: 150px;
+        grid-area: scroll-sm;
+    }
+    .ex-talent {
+        grid-area: ex-talent;
+    }
+    .ex-vid {
+        max-width: 30vw;
+        grid-area: ex-vid;
+        aspect-ratio: 16 /12;
+    }
+}
+
+
+.talents {
+    translate: 0 -150%;
+}
+
+
+.quote  blockquote {
+    width: 20ch;
+    font-size: var(--title-fs);
+    word-spacing: calc(var(--title-fs) * -.3);
+}
+
+
+.features-container {
+    container: features-container / inline-size;
+}
+
+.features {
+    --features-title-size : clamp(.7rem, 3vw - .3rem, .9rem) ;
+    --name-size : clamp(.6rem, 3vw , .7rem) ;
+
+    --grid-gap : 10vw;
+    --cols : 3;
+
+    gap: calc(var(--row-gap) * 2) var(--grid-gap);
+
+
+    div {
+        width: calc(
+        (90% / var(--cols)) - (var(--grid-gap) * ((var(--cols) - 1) / var(--cols))));
+    }
+
+    h6 {
+        text-wrap: initial;
+        font-size: var(--features-title-size);
+        word-spacing: calc(var(--features-title-size) * -.3);
+    }
+    
+    span {
+        font-size: var(--name-size);
+    }
+  
+
+} 
+
+@container features-container (width < 600px){
+
+.features {
+    --grid-gap : 10vw;
+    --cols : 2;
+    div:nth-child(3) {
+        min-width: 100%;
+    }
+} 
+
+}
+
+
+
+
+
+
+.home-intro {
+    background: var(--bg-body);
+    inset: 0;
+}
+
+
+.load {
+    width: var(--_width);
+
+    > div {
+      --_height : 50px;
+      height:var(--_height);
+    }
+      
+}
+  
+
+  
+
+  
+@media (width <= 576px){
+
+    .load {
+      --_width : 65vw;
+      > div {
+        --_height:40px;
+      }
+    }
+
+    .team-description p{
+        margin-inline: auto;
+    }
+
+
+
+
+
+    .features {
+        --col-gap: 15vw;
+        --cols: 2;
+    } 
+    
+
+}
+  
+@media (width >= 576px){
+    .load {
+      --_width : 30vw;
+      > div {
+        --_height:50px;
+      }
+    }
+
+}
+
+@media (width < 992px){
+    
+.thumbnail-wrapper {
+    grid-template-areas:
+    " ex-vid ex-vid" 
+    "scroll-sm  ex-talent" ;
+
+    .ex-vid {
+        max-width: 45vw;
+    }
+}
+
+}

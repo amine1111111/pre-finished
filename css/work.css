@@ -1,0 +1,28 @@
+h1 {
+    margin: 15vh 0 5vh 0;
+}
+
+.work-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
+    gap: 3rem 1rem; 
+}
+
+.box {
+    &:hover .video-wrapper {
+        z-index: initial;
+    }
+}
+
+.bg-wrapper {
+    aspect-ratio: 16 / 9;
+}
+:where(.img-wrapper, .video-wrapper){
+    position: absolute;
+    inset: 0;
+}
+
+.video-wrapper {
+    z-index: -2;
+    transition: all .5s ease;
+}
